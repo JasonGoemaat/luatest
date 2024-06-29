@@ -9,7 +9,9 @@
                 "/EHsc",
                 "/nologo",
                 "/Fe${fileDirname}\\${fileBasenameNoExtension}.exe",
-                "${file}"
+                "${file}",
+                "/Ic:/git/luajit/src",
+                "/link \"/LIBPATH:C:/git/luajit/src\" lua51.lib"
             ],
             "options": {
                 "cwd": "${fileDirname}"
