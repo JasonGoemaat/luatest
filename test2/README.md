@@ -1,5 +1,8 @@
 # Test 2
 
+> NOTE: You have to copy 'lua51.dll' from your luajit build to the same
+directory as main.exe for this to work, or add it somewhere in your path.
+
 Now is where I usually fail.   I want to build against the 
 LUAJIT libraries.  Currently I am working with this
 directory structure:
