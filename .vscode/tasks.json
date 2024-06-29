@@ -10,8 +10,8 @@
                 "/nologo",
                 "/Fe${fileDirname}\\${fileBasenameNoExtension}.exe",
                 "${file}",
-                "/Ic:/git/luajit/src",
-                "/link \"/LIBPATH:C:/git/luajit/src\" lua51.lib"
+                "/I${workspaceFolder}/luajit/src",
+                "/link \"/LIBPATH:${workspaceFolder}/luajit/src\" lua51.lib luajit.lib"
             ],
             "options": {
                 "cwd": "${fileDirname}"
