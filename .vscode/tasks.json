@@ -8,7 +8,10 @@
                 "/Zi",
                 "/EHsc",
                 "/nologo",
-                "/Fe${fileDirname}\\${fileBasenameNoExtension}.exe",
+                "/Fe${fileDirname}\\bin\\${fileBasenameNoExtension}.exe",
+                "/Fd${fileDirname}\\bin\\${fileBasenameNoExtension}.pdb",
+                "/Fo${fileDirname}\\bin\\${fileBasenameNoExtension}.obj",
+                "/Fe${fileDirname}\\bin\\${fileBasenameNoExtension}.exe",
                 "${file}",
                 "/I${workspaceFolder}/luajit/src",
                 "/link \"/LIBPATH:${workspaceFolder}/luajit/src\" lua51.lib luajit.lib"
