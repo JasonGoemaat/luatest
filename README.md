@@ -72,3 +72,20 @@ To debug in visual studio, use your developer command prompt and change to the d
 4. Compiling 64-bit, use `x64 native tools Command Prompt for VS 2022` when opening VS Code
     * Make sure to include `<stdlib.h>` when doing malloc or it assumes the return value is int.
     * Same for ALL libraries I assume for functions that return anything other than 32 bit int in 64 bit mode...
+5. May use 32 bit GC in lua, compile with `msvcbuild.bat nogc64 static` to compile a 64 bit binary but use 32 bit memory for the linux VM which makes it use 32 bit registers more and use less memory.
+6. If it can't find 'main.lua', make sure it's in the right directory.  Running inside VS Code uses the same folder as main.c, while using the exe in the bin directory looks in the bin directory.
+
+## Links
+
+LuaJIT internals - VERY detailed information:  https://0xbigshaq.github.io/2022/08/23/lua-jit/ Can
+find '\x1bLJ' which seems to be a vm bytecode definition, but not sure since there are some diffs.
+But including size it contains constant strings I think.   When I get to the opcodes the offsets
+are messed up I *think*.   At least they don't make sense with what follows.
+
+## Notes
+
+Possibly disable `-DLUAJIT_ENABLE_GC64` to get the 32 bit register usage in certain places?  Actually
+the docs have changed, now use `-DLUAJIT_DISABLE_GC64` to disable this.   Let's try it...  Ah, build
+like this:
+
+    msvcbuild.bat nogc64 static
