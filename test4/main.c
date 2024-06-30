@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <luajit.h>
 #include <lauxlib.h>
 
@@ -8,13 +9,16 @@ int main(int argc, char **argv)
     // return 0;
     char *buffer = 0;
     long length;
+    size_t buffer_size;
     FILE *f = fopen("main.lua", "rb");
     if (f)
     {
         fseek(f, 0, SEEK_END);
         length = ftell(f);
         fseek(f, 0, SEEK_SET);
-        buffer = (char *)malloc(length+2);
+        buffer_size = length;
+        buffer_size += 2;
+        buffer = (char *)malloc(buffer_size);
         if (buffer)
         {
             fread(buffer, 1, length, f);

@@ -60,8 +60,15 @@ it should work for earlier ones also):
     "/Fo${fileDirname}\\bin\\${fileBasenameNoExtension}.obj",
     "/Fe${fileDirname}\\bin\\${fileBasenameNoExtension}.exe",
 
+To debug in visual studio, use your developer command prompt and change to the directory and run:
+
+    DevEnv /debugexe main.exe
+
 ## Possible problems
 
 1. You didn't clone the luajit submodule, run `git submodules --init update`
 2. You didn't start VS Code from the developer command prompt to set compiler environment variables
 3. ??? - let me know if you have other issues
+4. Compiling 64-bit, use `x64 native tools Command Prompt for VS 2022` when opening VS Code
+    * Make sure to include `<stdlib.h>` when doing malloc or it assumes the return value is int.
+    * Same for ALL libraries I assume for functions that return anything other than 32 bit int in 64 bit mode...
